@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Agregar Juego</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input type="text" [(ngModel)]="newGame.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Género</ion-label>
+      <ion-input type="text" [(ngModel)]="newGame.genre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Plataforma</ion-label>
+      <ion-input type="text" [(ngModel)]="newGame.platform"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Año de lanzamiento</ion-label>
+      <ion-input type="number" [(ngModel)]="newGame.releaseYear"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">URL de la imagen</ion-label>
+      <ion-input type="text" [(ngModel)]="newGame.imageUrl"></ion-input>
+    </ion-item>
+    <!-- Condición para mostrar la imagen solo si el campo de la URL de la imagen no está vacío -->
+    <ion-thumbnail slot="start" class="larger-thumbnail" *ngIf="newGame.imageUrl.trim() !== ''">
+      <img [src]="newGame.imageUrl" alt="{{newGame.title}}">
+    </ion-thumbnail>
+  </ion-list>
+
+
+  <ion-button expand="block" (click)="agregarJuego()">Agregar Juego</ion-button>
+  <ion-button expand="block" color="danger" (click)="cancelar()">Cancelar</ion-button>
+</ion-content>

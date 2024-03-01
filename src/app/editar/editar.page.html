@@ -1,0 +1,29 @@
+<ion-content class="ion-page" [fullscreen]="true">
+  <ion-list *ngIf="game">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input [(ngModel)]="game.title" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Género</ion-label>
+      <ion-input [(ngModel)]="game.genre" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Plataforma</ion-label>
+      <ion-input [(ngModel)]="game.platform" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Año de lanzamiento</ion-label>
+      <ion-input [(ngModel)]="game.releaseYear" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Imagen URL</ion-label>
+      <ion-input [(ngModel)]="game.imageUrl" type="text"></ion-input>
+    </ion-item>
+    <ion-thumbnail slot="start" class="larger-thumbnail">
+      <img [src]="game.imageUrl" alt="{{ game?.title }}">
+    </ion-thumbnail>
+  </ion-list>
+  <ion-button expand="block" (click)="Guardar()">Guardar</ion-button>
+  <ion-button expand="block" color="danger" (click)="Cancelar()">Cancelar</ion-button>
+</ion-content>

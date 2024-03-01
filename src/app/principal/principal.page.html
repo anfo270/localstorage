@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarSesion()">
+        <ion-icon name="log-out"></ion-icon>
+        Cerrar Sesión
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Principal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-title size="large">Bienvenido {{usuarioNombre}}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button expand="block" (click)="agregarJuego()">Agregar Juego</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-list>
+    <ion-item-sliding *ngFor="let game of games">
+      <ion-item (click)="detalles(game.id)">
+        <ion-thumbnail slot="start">
+          <img [src]="game.imageUrl" alt="{{ game.title }}">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>Titulo: {{ game.title }}</h2>
+          <p>Genero: {{ game.genre }}</p>
+          <p>Plataforma: {{ game.platform }}</p>
+          <p>Año de lanzamiento: {{ game.releaseYear }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option (click)="editar(game.id)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item-options>
+        <ion-item-option (click)="detalles(game.id)">
+          <ion-icon slot="icon-only" name="information-circle"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="borrar(game.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

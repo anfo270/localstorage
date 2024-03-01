@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/principal"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ game?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ game?.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-thumbnail slot="start" class="larger-thumbnail">
+        <img [src]="game?.imageUrl" alt="{{ game?.title }}">
+      </ion-thumbnail>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <h2>Titulo</h2>
+            <p>{{ game?.title }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Género</h2>
+            <p>{{ game?.genre }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Plataforma</h2>
+            <p>{{ game?.platform }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Año de lanzamiento</h2>
+            <p>{{ game?.releaseYear }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-row class="ion-margin-top ion-justify-content-end">
+    <ion-col size="auto">
+      <ion-button (click)="editar(game?.id)" color="primary" expand="block">Editar</ion-button>
+    </ion-col>
+    <ion-col size="auto">
+      <ion-button (click)="borrar(game?.id)" color="danger" expand="block">Borrar</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
